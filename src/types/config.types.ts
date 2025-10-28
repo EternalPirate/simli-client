@@ -3,6 +3,27 @@
  */
 
 /**
+ * Legacy SimliClient configuration (for backward compatibility)
+ */
+export interface SimliConfig {
+  apiKey: string;
+  faceID: string;
+  handleSilence: boolean;
+  maxSessionLength: number;
+  maxIdleTime: number;
+  session_token: string;
+  videoRef: HTMLVideoElement;
+  audioRef: HTMLAudioElement;
+  enableConsoleLogs?: boolean;
+  SimliURL: string;
+  maxRetryAttempts: number;
+  retryDelay_ms: number;
+  videoReceivedTimeout: number;
+  enableSFU: boolean;
+  model: 'fasttalk' | 'artalk' | '';
+}
+
+/**
  * SimliClient configuration options
  */
 export interface SimliClientConfig {

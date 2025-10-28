@@ -3,7 +3,7 @@
  */
 
 /**
- * Connection state
+ * Connection state enum
  */
 export enum ConnectionState {
   IDLE = 'idle',
@@ -13,6 +13,37 @@ export enum ConnectionState {
   DISCONNECTED = 'disconnected',
   FAILED = 'failed',
   RECONNECTING = 'reconnecting',
+}
+
+/**
+ * Connection state type (union of string literals)
+ */
+export type ConnectionStateType =
+  | 'idle'
+  | 'connecting'
+  | 'connected'
+  | 'disconnecting'
+  | 'disconnected'
+  | 'failed'
+  | 'reconnecting';
+
+/**
+ * Session state
+ */
+export type SessionState =
+  | 'uninitialized'
+  | 'initializing'
+  | 'active'
+  | 'paused'
+  | 'ended'
+  | 'error';
+
+/**
+ * Media state for video and audio
+ */
+export interface MediaState {
+  video: 'idle' | 'initializing' | 'ready' | 'streaming' | 'paused' | 'stopped' | 'error';
+  audio: 'idle' | 'initializing' | 'ready' | 'streaming' | 'paused' | 'stopped' | 'error';
 }
 
 /**

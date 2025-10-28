@@ -227,3 +227,45 @@ export enum ProtocolErrorCode {
   TIMEOUT = 'TIMEOUT',
   CONNECTION_LOST = 'CONNECTION_LOST',
 }
+
+/**
+ * WebSocket connection states
+ */
+export type WebSocketState =
+  | 'disconnected'
+  | 'connecting'
+  | 'connected'
+  | 'reconnecting'
+  | 'error';
+
+/**
+ * WebSocket message (for transport layer)
+ */
+export type WebSocketMessage =
+  | { type: 'speak' }
+  | { type: 'silent' }
+  | { type: 'missing_session_token' }
+  | { type: 'answer'; sdp: string }
+  | { type: 'binary'; data: ArrayBuffer | Blob }
+  | ProtocolMessage;
+
+/**
+ * Session token request
+ */
+export interface SessionTokenRequest {
+  faceId: string;
+  isJPG: boolean;
+  apiKey: string;
+  syncAudio: boolean;
+  handleSilence: boolean;
+  maxSessionLength: number;
+  maxIdleTime: number;
+  model: 'fasttalk' | 'artalk';
+}
+
+/**
+ * Session token response
+ */
+export interface SessionTokenResponse {
+  session_token: string;
+}
